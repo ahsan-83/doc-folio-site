@@ -1,14 +1,19 @@
 import { Card } from "@/components/ui/card";
+import consultationRoom from "@/assets/gallery-consultation-room.jpg";
+import medicalEquipment from "@/assets/gallery-medical-equipment.jpg";
+import hospitalFacility from "@/assets/gallery-hospital-facility.jpg";
+import patientCare from "@/assets/gallery-patient-care.jpg";
+import reception from "@/assets/gallery-reception.jpg";
+import conference from "@/assets/gallery-conference.jpg";
 
 const Gallery = () => {
-  // Placeholder for gallery images - in a real implementation, these would be actual images
   const galleryImages = [
-    { id: 1, alt: "Modern consultation room" },
-    { id: 2, alt: "Medical equipment" },
-    { id: 3, alt: "Hospital facility" },
-    { id: 4, alt: "Patient care area" },
-    { id: 5, alt: "Reception area" },
-    { id: 6, alt: "Medical conference" },
+    { id: 1, src: consultationRoom, alt: "Modern consultation room" },
+    { id: 2, src: medicalEquipment, alt: "Medical equipment" },
+    { id: 3, src: hospitalFacility, alt: "Hospital facility" },
+    { id: 4, src: patientCare, alt: "Patient care area" },
+    { id: 5, src: reception, alt: "Reception area" },
+    { id: 6, src: conference, alt: "Medical conference" },
   ];
 
   return (
@@ -29,9 +34,13 @@ const Gallery = () => {
               key={image.id}
               className="overflow-hidden shadow-soft hover:shadow-medium transition-all group cursor-pointer"
             >
-              <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <p className="text-muted-foreground text-center px-4">{image.alt}</p>
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
             </Card>
           ))}
